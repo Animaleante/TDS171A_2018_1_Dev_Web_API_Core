@@ -36,9 +36,17 @@ namespace SoboruApi.Controllers
         [HttpGet("{id}", Name = "GetReceita")]
         public ActionResult<Receita> GetById(long id) {
             Receita receita = _context.Receitas.Find(id);
+            //Receita receita = _context.Receitas.Include(r => r.ReceitasUtensilios).FirstOrDefault(r => r.Id == id);
             if(receita == null) {
                 return NotFound();
             }
+
+            /*ReceitaUtensilio receitaUtensilio = new ReceitaUtensilio();
+            receitaUtensilio.ReceitaId = receita.Id;
+            receitaUtensilio.UtensilioId = 2;
+
+            receita.ReceitasUtensilios.Add(receitaUtensilio);
+            _context.SaveChanges();*/
 
             return receita;
         }
@@ -52,7 +60,7 @@ namespace SoboruApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(long id, Receita item) {
+        public IActionResult Update(long id, ReceitaDTO item) {
             Receita receita = _context.Receitas.Find(id);
             if(receita == null) {
                 return NotFound();
