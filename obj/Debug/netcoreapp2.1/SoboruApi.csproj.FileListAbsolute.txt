@@ -1,0 +1,14 @@
+C:\Users\PC970\GitHub\SoboruApi\bin\Debug\netcoreapp2.1\SoboruApi.deps.json
+C:\Users\PC970\GitHub\SoboruApi\bin\Debug\netcoreapp2.1\SoboruApi.runtimeconfig.json
+C:\Users\PC970\GitHub\SoboruApi\bin\Debug\netcoreapp2.1\SoboruApi.runtimeconfig.dev.json
+C:\Users\PC970\GitHub\SoboruApi\bin\Debug\netcoreapp2.1\SoboruApi.dll
+C:\Users\PC970\GitHub\SoboruApi\bin\Debug\netcoreapp2.1\SoboruApi.pdb
+C:\Users\PC970\GitHub\SoboruApi\obj\Debug\netcoreapp2.1\SoboruApi.csprojAssemblyReference.cache
+C:\Users\PC970\GitHub\SoboruApi\obj\Debug\netcoreapp2.1\SoboruApi.csproj.CoreCompileInputs.cache
+C:\Users\PC970\GitHub\SoboruApi\obj\Debug\netcoreapp2.1\SoboruApi.RazorAssemblyInfo.cache
+C:\Users\PC970\GitHub\SoboruApi\obj\Debug\netcoreapp2.1\SoboruApi.RazorAssemblyInfo.cs
+C:\Users\PC970\GitHub\SoboruApi\obj\Debug\netcoreapp2.1\SoboruApi.AssemblyInfoInputs.cache
+C:\Users\PC970\GitHub\SoboruApi\obj\Debug\netcoreapp2.1\SoboruApi.AssemblyInfo.cs
+C:\Users\PC970\GitHub\SoboruApi\obj\Debug\netcoreapp2.1\SoboruApi.RazorTargetAssemblyInfo.cache
+C:\Users\PC970\GitHub\SoboruApi\obj\Debug\netcoreapp2.1\SoboruApi.dll
+C:\Users\PC970\GitHub\SoboruApi\obj\Debug\netcoreapp2.1\SoboruApi.pdb
