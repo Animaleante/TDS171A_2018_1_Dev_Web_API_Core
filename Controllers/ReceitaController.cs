@@ -17,12 +17,20 @@ namespace SoboruApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Receita>> GetAll() {
+        public ActionResult<List<ReceitaDTO>> GetAll() {
             //return _context.Receitas.ToList();
-            return _context.Receitas
+            /*return _context.Receitas
                 .Include(re => re.ReceitasUtensilios)
                 .ThenInclude(ru => ru.Utensilio)
-                .ToList();
+                .ToList();*/
+            return _context.Receitas.Include(r => r.ReceitasUtensilios).ThenInclude(ru => ru.Utensilio).Select(re => new ReceitaDTO {
+                Id = re.Id,
+                Nome = re.Nome,
+                Utensilios = re.ReceitasUtensilios.Select(ru => new UtensilioDTO {
+                    Id = ru.Utensilio.Id,
+                    Nome = ru.Utensilio.Nome
+                }).ToList()
+            }).ToList();
         }
 
         [HttpGet("{id}", Name = "GetReceita")]
