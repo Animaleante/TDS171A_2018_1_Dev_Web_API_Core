@@ -7,6 +7,6 @@ namespace SoboruApi.Models
         public long Id {get;set;}
         public string Nome {get;set;}
 
-        public List<ReceitaUtensilio> ReceitasUtensilios {get;set;}
+        public virtual IList<ReceitaUtensilio> ReceitasUtensilios {get;set;}
     }
 }
