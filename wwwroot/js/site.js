@@ -40,8 +40,8 @@ function getData() {
 
 function addItem() {
     const item = {
-        'name': $('#add-nome').val(),
-        'name': $('#add-abreviacao').val()
+        'nome': $('#add-nome').val(),
+        'abreviacao': $('#add-abreviacao').val()
     };
 
     $.ajax({

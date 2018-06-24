@@ -13,11 +13,6 @@ namespace SoboruApi.Controllers
 
         public MedidaController(SoboruContext context) {
             _context = context;
-
-            if(_context.Medidas.Count() == 0) {
-                _context.Medidas.Add(new Medida{Nome = "Gramas", Abreviacao = "gr"});
-                _context.SaveChanges();
-            }
         }
 
         [HttpGet]
@@ -61,7 +56,7 @@ namespace SoboruApi.Controllers
 
         [HttpDelete("{id}")]
         public IActionResult Delete(long id) {
-            var medida = _context.Medidas.Find(id);
+            Medida medida = _context.Medidas.Find(id);
             if(medida == null) {
                 return NotFound();
             }

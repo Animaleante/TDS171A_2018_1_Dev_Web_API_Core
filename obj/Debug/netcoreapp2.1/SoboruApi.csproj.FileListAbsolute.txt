@@ -12,3 +12,4 @@ C:\Users\PC970\GitHub\SoboruApi\obj\Debug\netcoreapp2.1\SoboruApi.AssemblyInfo.c
 C:\Users\PC970\GitHub\SoboruApi\obj\Debug\netcoreapp2.1\SoboruApi.RazorTargetAssemblyInfo.cache
 C:\Users\PC970\GitHub\SoboruApi\obj\Debug\netcoreapp2.1\SoboruApi.dll
 C:\Users\PC970\GitHub\SoboruApi\obj\Debug\netcoreapp2.1\SoboruApi.pdb
+C:\Users\PC970\GitHub\SoboruApi\bin\Debug\netcoreapp2.1\app.db

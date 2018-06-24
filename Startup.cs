@@ -6,30 +6,37 @@ using Microsoft.AspNetCore.Builder;
 //using Microsoft.AspNetCore.Hosting;
 //using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-//using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 //using Microsoft.Extensions.Logging;
 //using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
+//using Microsoft.AspNetCore.Mvc.Formatters;
+using Newtonsoft.Json;
 using SoboruApi.Models;
 
 namespace SoboruApi
 {
     public class Startup
     {
-        /*public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }*/
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SoboruContext>(opt => 
-                opt.UseInMemoryDatabase("SoboruApp"));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+                opt.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddJsonOptions(options => {
+                    //options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
