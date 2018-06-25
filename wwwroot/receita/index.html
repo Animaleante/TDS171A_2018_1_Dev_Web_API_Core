@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Medida CRUD</title>
+    <title>Receita CRUD</title>
 
     <style>
         input[type='submit'], button, [aria-label] {
@@ -33,11 +33,10 @@
     </style>
 </head>
 <body>
-        <h1>Medida CRUD</h1>
+        <h1>Receita CRUD</h1>
         <h3>Adicionar</h3>
         <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
             <input type="text" id="add-nome" placeholder="Nova medida">
-            <input type="text" id="add-abreviacao" placeholder="Nova medida Abreviação">
             <input type="submit" value="Adicionar">
         </form>
     
@@ -46,7 +45,6 @@
             <form class="my-form">
                 <input type="hidden" id="edit-id">
                 <input type="text" id="edit-nome">
-                <input type="text" id="edit-abreviacao">
                 <input type="submit" value="Edit">
                 <a onclick="closeInput()" aria-label="Fechar">&#10006;</a>
             </form>
@@ -57,11 +55,10 @@
         <table>
             <tr>
                 <th>Nome</th>
-                <th>Abreviacao</th>
                 <th></th>
                 <th></th>
             </tr>
-            <tbody id="medidas"></tbody>
+            <tbody id="receitas"></tbody>
         </table>
 
         <hr />
@@ -71,6 +68,6 @@
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"
                 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
                 crossorigin="anonymous"></script>
-        <script src="/js/medida.js"></script>
+        <script src="/js/receita.js"></script>
 </body>
 </html>
