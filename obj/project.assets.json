@@ -11832,23 +11832,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PC970\\.nuget\\packages\\": {},
+    "C:\\Users\\Diogo\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PC970\\GitHub\\SoboruApi\\SoboruApi.csproj",
+      "projectUniqueName": "C:\\Users\\Diogo\\Git\\TDS171A_2018_1_Dev_Web_API_Core\\SoboruApi.csproj",
       "projectName": "SoboruApi",
-      "projectPath": "C:\\Users\\PC970\\GitHub\\SoboruApi\\SoboruApi.csproj",
-      "packagesPath": "C:\\Users\\PC970\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PC970\\GitHub\\SoboruApi\\obj\\",
+      "projectPath": "C:\\Users\\Diogo\\Git\\TDS171A_2018_1_Dev_Web_API_Core\\SoboruApi.csproj",
+      "packagesPath": "C:\\Users\\Diogo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Diogo\\Git\\TDS171A_2018_1_Dev_Web_API_Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\PC970\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Diogo\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"

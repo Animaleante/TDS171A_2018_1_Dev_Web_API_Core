@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 //using Microsoft.AspNetCore.Mvc.Formatters;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using SoboruApi.Models;
 
 namespace SoboruApi
@@ -34,7 +35,7 @@ namespace SoboruApi
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddJsonOptions(options => {
-                    //options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 });
         }

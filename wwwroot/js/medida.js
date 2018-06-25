@@ -1,4 +1,4 @@
-const uri = 'api/medida';
+const uri = '/api/medida';
 let medidas = null;
 function getCount(data) {
     const el = $('#counter');
