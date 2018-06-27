@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using SoboruApi.Models;
+using TDS171A_2018_1_Dev_Web_API_Core.Services;
 
 namespace SoboruApi.Controllers
 {
@@ -9,9 +10,11 @@ namespace SoboruApi.Controllers
     [ApiController]
     public class MedidaController : Controller
     {
+        private readonly IAuthService _authService;
         private readonly SoboruContext _context;
 
-        public MedidaController(SoboruContext context) {
+        public MedidaController(IAuthService authService, SoboruContext context) {
+            _authService = authService;
             _context = context;
         }
 
@@ -31,7 +34,12 @@ namespace SoboruApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Medida medida) {
+        public IActionResult Create([FromHeader] string Authorization, [FromBody] Medida medida) {
+            if(!_authService.validateToken(Authorization)) {
+                Response.Headers.Add("WWW-Authenticate", "");
+                return Unauthorized(); 
+            }
+
             _context.Medidas.Add(medida);
             _context.SaveChanges();
 

@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using SoboruApi.Models;
+using TDS171A_2018_1_Dev_Web_API_Core.Services;
 
 namespace SoboruApi
 {
@@ -32,12 +33,15 @@ namespace SoboruApi
         {
             services.AddDbContext<SoboruContext>(opt => 
                 opt.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddJsonOptions(options => {
                     options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 });
+
+            services.AddTransient<IAuthService, AuthService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

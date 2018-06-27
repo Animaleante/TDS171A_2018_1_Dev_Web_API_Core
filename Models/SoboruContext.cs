@@ -27,5 +27,6 @@ namespace SoboruApi.Models
         public DbSet<Medida> Medidas {get;set;}
         public DbSet<Receita> Receitas {get;set;}
         public DbSet<Utensilio> Utensilios {get;set;}
+        public DbSet<Usuario> Usuarios {get;set;}
     }
 }
