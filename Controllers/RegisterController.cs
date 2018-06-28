@@ -24,7 +24,7 @@ namespace SoboruApi.Controllers
                 Usuario usuarioBase = await _repository.GetByEmail(usuario.Email);
                 if(usuarioBase == null) {
                     await _repository.Add(usuario);
-                    return NoContent();
+                    return Ok();
                 } else {
                     return Conflict("Email já esta sendo utilizado.");
                 }

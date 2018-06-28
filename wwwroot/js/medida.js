@@ -39,6 +39,15 @@ function getData() {
 }
 
 function addItem() {
+    var token = '';
+
+    token = localStorage.getItem('JwtToken');
+
+    if('' === token || null === token) {
+        alert("Essa chamada requer um token de autorização.");
+        return;
+    }
+
     const item = {
         'nome': $('#add-nome').val(),
         'abreviacao': $('#add-abreviacao').val()
@@ -50,8 +59,13 @@ function addItem() {
         url: uri,
         contentType: 'application/json',
         data: JSON.stringify(item),
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert('here');
+            console.error(textStatus, errorThrown);
+            if(errorThrown === "Unauthorized")
+                alert('Seu token expirou. Faça login novamente.');
         },
         success: function (result) {
             getData();
