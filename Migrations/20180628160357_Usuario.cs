@@ -14,8 +14,7 @@ namespace SoboruApi.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Email = table.Column<string>(nullable: true),
                     Nome = table.Column<string>(nullable: true),
-                    Senha = table.Column<string>(nullable: true),
-                    ChaveAcesso = table.Column<string>(nullable: true)
+                    Senha = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

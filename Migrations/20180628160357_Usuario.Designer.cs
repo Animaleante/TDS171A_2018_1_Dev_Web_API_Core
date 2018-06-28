@@ -61,8 +61,6 @@ namespace SoboruApi.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ChaveAcesso");
-
                     b.Property<string>("Email");
 
                     b.Property<string>("Nome");
