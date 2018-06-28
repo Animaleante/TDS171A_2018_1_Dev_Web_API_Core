@@ -34,8 +34,6 @@ namespace SoboruApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Utensilio utensilio) {
             await _repository.Add(utensilio);
-            // _context.Utensilios.Add(utensilio);
-            // _context.SaveChanges();
 
             return CreatedAtRoute("GetUtensilio", new Utensilio{Id = utensilio.Id}, utensilio);
         }
@@ -50,8 +48,6 @@ namespace SoboruApi.Controllers
             utensilio.Nome = item.Nome;
 
             await _repository.Update(utensilio);
-            // _context.Utensilios.Update(utensilio);
-            // _context.SaveChanges();
 
             return NoContent();
         }
@@ -64,8 +60,6 @@ namespace SoboruApi.Controllers
             }
 
             await _repository.Delete(utensilio);
-            // _context.Utensilios.Remove(utensilio);
-            // _context.SaveChanges();
 
             return NoContent();
         }

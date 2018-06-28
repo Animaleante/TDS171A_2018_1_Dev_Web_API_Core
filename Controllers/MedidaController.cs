@@ -42,8 +42,6 @@ namespace SoboruApi.Controllers
             }
 
             await _repository.Add(medida);
-            //_context.Medidas.Add(medida);
-            //_context.SaveChanges();
 
             return CreatedAtRoute("GetMedida", new Medida{Id = medida.Id}, medida);
         }
@@ -59,8 +57,6 @@ namespace SoboruApi.Controllers
             medida.Abreviacao = item.Abreviacao;
 
             await _repository.Update(medida);
-            //_context.Medidas.Update(medida);
-            //_context.SaveChanges();
 
             return NoContent();
         }
@@ -73,8 +69,6 @@ namespace SoboruApi.Controllers
             }
 
             await _repository.Delete(medida);
-            //_context.Medidas.Remove(medida);
-            //_context.SaveChanges();
 
             return NoContent();
         }

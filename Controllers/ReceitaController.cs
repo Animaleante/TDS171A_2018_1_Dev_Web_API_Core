@@ -19,20 +19,6 @@ namespace SoboruApi.Controllers
 
         [HttpGet]
         public ActionResult<List<ReceitaDTO>> GetAll() {
-            //return _context.Receitas.ToList();
-            /*return _context.Receitas
-                .Include(re => re.ReceitasUtensilios)
-                .ThenInclude(ru => ru.Utensilio)
-                .ToList();*/
-            /*return _context.Receitas.Include(r => r.ReceitasUtensilios).ThenInclude(ru => ru.Utensilio).Select(re => new ReceitaDTO {
-                Id = re.Id,
-                Nome = re.Nome,
-                Utensilios = re.ReceitasUtensilios.Select(ru => new UtensilioDTO {
-                    Id = ru.Utensilio.Id,
-                    Nome = ru.Utensilio.Nome
-                }).ToList()
-            }).ToList();*/
-
             return _repository.GetAllFull().Select(re => new ReceitaDTO {
                 Id = re.Id,
                 Nome = re.Nome,
@@ -45,7 +31,6 @@ namespace SoboruApi.Controllers
 
         [HttpGet("{id}", Name = "GetReceita")]
         public ActionResult<ReceitaDTO> GetById(long id) {
-            //Receita receita = _context.Receitas.Include(r => r.ReceitasUtensilios).FirstOrDefault(r => r.Id == id);
             ReceitaDTO receita = _repository.GetFullById(id).Select(re => new ReceitaDTO {
                 Id = re.Id,
                 Nome = re.Nome,
@@ -72,8 +57,6 @@ namespace SoboruApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Receita receita) {
             await _repository.Add(receita);
-            // _context.Receitas.Add(receita);
-            // _context.SaveChanges();
 
             return CreatedAtRoute("GetReceita", new Receita{Id = receita.Id}, receita);
         }
@@ -88,8 +71,6 @@ namespace SoboruApi.Controllers
             receita.Nome = item.Nome;
 
             await _repository.Update(receita);
-            // _context.Receitas.Update(receita);
-            // _context.SaveChanges();
 
             return NoContent();
         }
@@ -102,8 +83,6 @@ namespace SoboruApi.Controllers
             }
 
             await _repository.Delete(receita);
-            // _context.Receitas.Remove(receita);
-            // _context.SaveChanges();
 
             return NoContent();
         }
