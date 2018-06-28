@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using SoboruApi.Models;
-using TDS171A_2018_1_Dev_Web_API_Core.Services;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SoboruApi.Controllers
 {
@@ -11,11 +11,9 @@ namespace SoboruApi.Controllers
     [ApiController]
     public class MedidaController : Controller
     {
-        private readonly IAuthService _authService;
         private readonly IMedidaRepository _repository;
         
-        public MedidaController(IAuthService authService, IMedidaRepository repository) {
-            _authService = authService;
+        public MedidaController(IMedidaRepository repository) {
             _repository = repository;
         }
 
@@ -34,13 +32,9 @@ namespace SoboruApi.Controllers
             return medida;
         }
 
+        [Authorize("Bearer")]
         [HttpPost]
-        public async Task<IActionResult> Create([FromHeader] string Authorization, [FromBody] Medida medida) {
-            if(!_authService.validateToken(Authorization)) {
-                Response.Headers.Add("WWW-Authenticate", "");
-                return Unauthorized(); 
-            }
-
+        public async Task<IActionResult> Create(Medida medida) {
             await _repository.Add(medida);
 
             return CreatedAtRoute("GetMedida", new Medida{Id = medida.Id}, medida);

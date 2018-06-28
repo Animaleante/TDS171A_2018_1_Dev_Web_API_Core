@@ -6,7 +6,7 @@ namespace SoboruApi.Models
 {
     public class Repository<T> : IRepository<T> where T : class, IEntity
     {
-        private readonly SoboruContext _context;
+        protected readonly SoboruContext _context;
 
         public Repository(SoboruContext context)
         {
