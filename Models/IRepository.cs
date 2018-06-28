@@ -1,12 +1,15 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SoboruApi.Models
 {
-    public interface IRepository<T>
+    public interface IRepository<T> where T : class
     {
-        T Add(T model);
-        bool Update(T model);
-        List<T> List();
-        bool Delete(long id);
+        IQueryable<T> List();
+        Task<T> GetById(long id);
+        Task Add(T model);
+        Task Update(T model);
+        Task Delete(T model);
     }
 }

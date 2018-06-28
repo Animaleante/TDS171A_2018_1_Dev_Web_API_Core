@@ -72,7 +72,7 @@ function deleteItem(id) {
 }
 
 function editItem(id) {
-    $.each(todos, function (key, item) {
+    $.each(medidas, function (key, item) {
         if (item.id === id) {
             $('#edit-nome').val(item.nome);
             $('#edit-abreviacao').val(item.abreviacao);
@@ -84,8 +84,8 @@ function editItem(id) {
 
 $('.my-form').on('submit', function () {
     const item = {
-        'name': $('#edit-nome').val(),
-        'name': $('#edit-abreviacao').val(),
+        'nome': $('#edit-nome').val(),
+        'abreviacao': $('#edit-abreviacao').val(),
         'id': $('#edit-id').val()
     };
 

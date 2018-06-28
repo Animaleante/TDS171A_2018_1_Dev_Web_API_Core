@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace SoboruApi.Models
 {
-    public class Utensilio
+    public class Utensilio : IEntity
     {
         public long Id {get;set;}
         public string Nome {get;set;}

@@ -1,25 +1,13 @@
+using System.Collections.Generic;
+using System.Linq;
+
 namespace SoboruApi.Models
 {
-    public class MedidaRepository : IRepository<Medida>
+    public class MedidaRepository : Repository<Medida>, IMedidaRepository
     {
-        public Medida Add(Medida model)
+        public MedidaRepository(SoboruContext context) : base(context)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public bool Delete(long id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public System.Collections.Generic.List<Medida> List()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool Update(Medida model)
-        {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

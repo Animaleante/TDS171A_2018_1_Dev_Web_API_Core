@@ -69,7 +69,7 @@ function deleteItem(id) {
 }
 
 function editItem(id) {
-    $.each(todos, function (key, item) {
+    $.each(receitas, function (key, item) {
         if (item.id === id) {
             $('#edit-nome').val(item.nome);
             $('#edit-id').val(item.id);
@@ -80,7 +80,7 @@ function editItem(id) {
 
 $('.my-form').on('submit', function () {
     const item = {
-        'name': $('#edit-nome').val(),
+        'nome': $('#edit-nome').val(),
         'id': $('#edit-id').val()
     };
 

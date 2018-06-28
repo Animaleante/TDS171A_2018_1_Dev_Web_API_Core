@@ -2,26 +2,12 @@ using System.Collections.Generic;
 
 namespace SoboruApi.Models
 {
-    public class UtensilioRepository : IRepository<Utensilio>
+    public class UtensilioRepository : Repository<Utensilio>, IUtensilioRepository
     {
-        public Utensilio Add(Utensilio model)
-        {
-            throw new System.NotImplementedException();
-        }
 
-        public bool Delete(long id)
+        public UtensilioRepository(SoboruContext context) : base(context)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public List<Utensilio> List()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool Update(Utensilio model)
-        {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

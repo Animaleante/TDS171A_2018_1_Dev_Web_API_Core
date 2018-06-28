@@ -42,8 +42,8 @@ namespace SoboruApi
                 });
 
             services.AddTransient<IAuthService, AuthService>();
-            services.AddScoped(typeof(IRepository<Medida>), typeof(MedidaRepository));
-            services.AddScoped(typeof(IRepository<Utensilio>), typeof(UtensilioRepository));
+            services.AddScoped<IMedidaRepository, MedidaRepository>();
+            services.AddScoped<IUtensilioRepository, UtensilioRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

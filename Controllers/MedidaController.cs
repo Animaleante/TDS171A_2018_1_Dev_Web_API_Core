@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SoboruApi.Models;
 using TDS171A_2018_1_Dev_Web_API_Core.Services;
+using System.Threading.Tasks;
 
 namespace SoboruApi.Controllers
 {
@@ -11,21 +12,21 @@ namespace SoboruApi.Controllers
     public class MedidaController : Controller
     {
         private readonly IAuthService _authService;
-        private readonly SoboruContext _context;
-
-        public MedidaController(IAuthService authService, SoboruContext context) {
+        private readonly IMedidaRepository _repository;
+        
+        public MedidaController(IAuthService authService, IMedidaRepository repository) {
             _authService = authService;
-            _context = context;
+            _repository = repository;
         }
 
         [HttpGet]
         public ActionResult<List<Medida>> GetAll() {
-            return _context.Medidas.ToList();
+            return _repository.List().ToList();
         }
 
         [HttpGet("{id}", Name = "GetMedida")]
-        public ActionResult<Medida> GetById(long id) {
-            Medida medida = _context.Medidas.Find(id);
+        public async Task<ActionResult<Medida>> GetById(long id) {
+            Medida medida = await _repository.GetById(id);
             if(medida == null) {
                 return NotFound();
             }
@@ -34,21 +35,22 @@ namespace SoboruApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromHeader] string Authorization, [FromBody] Medida medida) {
+        public async Task<IActionResult> Create([FromHeader] string Authorization, [FromBody] Medida medida) {
             if(!_authService.validateToken(Authorization)) {
                 Response.Headers.Add("WWW-Authenticate", "");
                 return Unauthorized(); 
             }
 
-            _context.Medidas.Add(medida);
-            _context.SaveChanges();
+            await _repository.Add(medida);
+            //_context.Medidas.Add(medida);
+            //_context.SaveChanges();
 
             return CreatedAtRoute("GetMedida", new Medida{Id = medida.Id}, medida);
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(long id, Medida item) {
-            Medida medida = _context.Medidas.Find(id);
+        public async Task<IActionResult> Update(long id, Medida item) {
+            Medida medida = await _repository.GetById(id);
             if(medida == null) {
                 return NotFound();
             }
@@ -56,21 +58,23 @@ namespace SoboruApi.Controllers
             medida.Nome = item.Nome;
             medida.Abreviacao = item.Abreviacao;
 
-            _context.Medidas.Update(medida);
-            _context.SaveChanges();
+            await _repository.Update(medida);
+            //_context.Medidas.Update(medida);
+            //_context.SaveChanges();
 
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(long id) {
-            Medida medida = _context.Medidas.Find(id);
+        public async Task<IActionResult> Delete(long id) {
+            Medida medida = await _repository.GetById(id);
             if(medida == null) {
                 return NotFound();
             }
 
-            _context.Medidas.Remove(medida);
-            _context.SaveChanges();
+            await _repository.Delete(medida);
+            //_context.Medidas.Remove(medida);
+            //_context.SaveChanges();
 
             return NoContent();
         }

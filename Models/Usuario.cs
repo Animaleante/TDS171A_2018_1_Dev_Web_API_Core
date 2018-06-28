@@ -1,6 +1,6 @@
 namespace SoboruApi.Models
 {
-    public class Usuario
+    public class Usuario : IEntity
     {
         public long Id {get;set;}
         public string Email {get;set;}

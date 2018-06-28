@@ -1,6 +1,6 @@
 namespace SoboruApi.Models
 {
-    public class Medida
+    public class Medida : IEntity
     {
         public long Id {get;set;}
         public string Nome {get;set;}
