@@ -23,7 +23,7 @@ namespace SoboruApi.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<object> Post([FromBody] Usuario usuario, [FromServices] SigningConfigurations signingConfiguration, [FromServices] TokenConfigurations tokenConfigurations) {
+        public async Task<object> Post([FromBody] Usuario usuario, [FromServices] SigningConfigurations signingConfigurations, [FromServices] TokenConfigurations tokenConfigurations) {
             bool validCredentials = false;
             if(usuario != null && !String.IsNullOrWhiteSpace(usuario.Email)) {
                 Usuario usuarioBase = await _repository.GetByEmail(usuario.Email);
@@ -48,7 +48,7 @@ namespace SoboruApi.Controllers
                 var securityToken = handler.CreateToken(new SecurityTokenDescriptor {
                     Issuer = tokenConfigurations.Issuer,
                     Audience = tokenConfigurations.Audience,
-                    SigningCredentials = signingConfiguration.SigningCredentials,
+                    SigningCredentials = signingConfigurations.SigningCredentials,
                     Subject = identity,
                     NotBefore = createdAt,
                     Expires = expiresAt
