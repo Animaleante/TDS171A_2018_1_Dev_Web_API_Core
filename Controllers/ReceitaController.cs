@@ -4,6 +4,7 @@ using System.Linq;
 using SoboruApi.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SoboruApi.Controllers
 {
@@ -54,6 +55,7 @@ namespace SoboruApi.Controllers
             return receita;
         }
 
+        [Authorize("Bearer")]
         [HttpPost]
         public async Task<IActionResult> Create(Receita receita) {
             await _repository.Add(receita);
@@ -61,6 +63,7 @@ namespace SoboruApi.Controllers
             return CreatedAtRoute("GetReceita", new Receita{Id = receita.Id}, receita);
         }
 
+        [Authorize("Bearer")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(long id, ReceitaDTO item) {
             Receita receita = await _repository.GetById(id);
@@ -75,6 +78,7 @@ namespace SoboruApi.Controllers
             return NoContent();
         }
 
+        [Authorize("Bearer")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(long id) {
             Receita receita = await _repository.GetById(id);

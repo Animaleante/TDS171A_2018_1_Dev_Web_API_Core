@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using SoboruApi.Models;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SoboruApi.Controllers
 {
@@ -31,6 +32,7 @@ namespace SoboruApi.Controllers
             return utensilio;
         }
 
+        [Authorize("Bearer")]
         [HttpPost]
         public async Task<IActionResult> Create(Utensilio utensilio) {
             await _repository.Add(utensilio);
@@ -38,6 +40,7 @@ namespace SoboruApi.Controllers
             return CreatedAtRoute("GetUtensilio", new Utensilio{Id = utensilio.Id}, utensilio);
         }
 
+        [Authorize("Bearer")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(long id, Utensilio item) {
             Utensilio utensilio = await _repository.GetById(id);
@@ -52,6 +55,7 @@ namespace SoboruApi.Controllers
             return NoContent();
         }
 
+        [Authorize("Bearer")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(long id) {
             Utensilio utensilio = await _repository.GetById(id);

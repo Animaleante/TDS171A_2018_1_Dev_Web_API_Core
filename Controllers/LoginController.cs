@@ -25,7 +25,7 @@ namespace SoboruApi.Controllers
         [HttpPost]
         public async Task<object> Post([FromBody] Usuario usuario, [FromServices] SigningConfigurations signingConfiguration, [FromServices] TokenConfigurations tokenConfigurations) {
             bool validCredentials = false;
-            if(usuario != null && !string.IsNullOrWhiteSpace(usuario.Email)) {
+            if(usuario != null && !String.IsNullOrWhiteSpace(usuario.Email)) {
                 Usuario usuarioBase = await _repository.GetByEmail(usuario.Email);
                 validCredentials = (usuarioBase != null &&
                     usuario.Email == usuarioBase.Email &&

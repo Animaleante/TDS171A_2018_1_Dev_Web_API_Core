@@ -40,6 +40,7 @@ namespace SoboruApi.Controllers
             return CreatedAtRoute("GetMedida", new Medida{Id = medida.Id}, medida);
         }
 
+        [Authorize("Bearer")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(long id, Medida item) {
             Medida medida = await _repository.GetById(id);
@@ -55,6 +56,7 @@ namespace SoboruApi.Controllers
             return NoContent();
         }
 
+        [Authorize("Bearer")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(long id) {
             Medida medida = await _repository.GetById(id);
